@@ -1,16 +1,55 @@
-# todos_example
+# Amplify Todo Example
 
-A new Flutter project.
+An example that shows how you can create an flutter application with offline-first approach using Amazon Amplify.
 
-## Getting Started
+# Getting Started
 
-This project is a starting point for a Flutter application.
+this project uses [freezed](https://pub.dev/packages/freezed) to generate Bloc events and state so please run:
 
-A few resources to get you started if this is your first Flutter project:
+`flutter pub run build_runner build --delete-conflicting-outputs`
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+to generate all necessery models.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Application Overview
+
+This app is simple todo app that allows three stages of todo progress `Todo`, `In Progress` and `Finished`. You can drag and drop todos from each column to another one and you can click on todo to mark it as either `Finished` or `Todo` depending on it current state.
+
+## Project Strucutre
+
+- `lib/splash_page` - provides an easy way to await features needed on app startup.
+
+- `lib/todo` - contains all files regarding main feature of the app.
+
+# Configuring Amplify
+
+To configure this application to work with amplify you will need to follow this steps
+
+1. create an amplify project
+2. Inside amplify project create and configure `TodoModel` and `TodoStatus` as described in the next section
+
+3. Publish models and wait for deployment
+4. [Install and configure Amplify CLI](https://docs.amplify.aws/cli/start/install/)
+5. From inside of your project folder run
+   `amplify pull --appId <appID> --envName <envName>` providing your appID and envName
+6. run `amplify push`
+7. fix import errors and start your application
+
+## Amplify Models
+
+```
+TodoModel
+----------
+String id
+String title
+String description
+TodoStatus status (Enum)
+```
+
+```
+TodoStatus (Enum)
+-----------
+Options:
+- todo
+- inprogress
+- finished
+```

@@ -7,4 +7,5 @@ class TodoEvent with _$TodoEvent {
       String task, String description, TodoStatus state) = _Add;
   const factory TodoEvent.delete(Todo todo) = _Delete;
   const factory TodoEvent.update(Todo todo) = _Update;
+  const factory TodoEvent.sync(List<Todo> todos) = _Sync;
 }

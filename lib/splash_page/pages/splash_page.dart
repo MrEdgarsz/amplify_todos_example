@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:todos_example/app.dart';
 
 class SplashPage extends StatelessWidget {
   final PageRoute homeRoute;
-  const SplashPage({Key? key, required this.homeRoute}) : super(key: key);
+  final Future<void> Function() initialize;
+  const SplashPage(
+      {Key? key, required this.homeRoute, required this.initialize})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: _init(),
+        future: initialize(),
         builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             Future.microtask(
@@ -18,14 +22,6 @@ class SplashPage extends StatelessWidget {
         },
       ),
     );
-  }
-
-  Future<void> _init() async {
-    await Future.delayed(const Duration(seconds: 2));
-    print("first future");
-    await Future.delayed(const Duration(seconds: 2));
-    print("second future");
-    return;
   }
 }
 

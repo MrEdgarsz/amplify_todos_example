@@ -19,7 +19,7 @@ class _$TodoTearOff {
   const _$TodoTearOff();
 
   _Todo call(
-      {required int? id,
+      {required String? id,
       required String title,
       required String description,
       required TodoStatus state}) {
@@ -37,7 +37,7 @@ const $Todo = _$TodoTearOff();
 
 /// @nodoc
 mixin _$Todo {
-  int? get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   TodoStatus get state => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ mixin _$Todo {
 abstract class $TodoCopyWith<$Res> {
   factory $TodoCopyWith(Todo value, $Res Function(Todo) then) =
       _$TodoCopyWithImpl<$Res>;
-  $Res call({int? id, String title, String description, TodoStatus state});
+  $Res call({String? id, String title, String description, TodoStatus state});
 }
 
 /// @nodoc
@@ -72,7 +72,7 @@ class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -94,7 +94,7 @@ abstract class _$TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
   factory _$TodoCopyWith(_Todo value, $Res Function(_Todo) then) =
       __$TodoCopyWithImpl<$Res>;
   @override
-  $Res call({int? id, String title, String description, TodoStatus state});
+  $Res call({String? id, String title, String description, TodoStatus state});
 }
 
 /// @nodoc
@@ -117,7 +117,7 @@ class __$TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -144,7 +144,7 @@ class _$_Todo implements _Todo {
       required this.state});
 
   @override
-  final int? id;
+  final String? id;
   @override
   final String title;
   @override
@@ -185,13 +185,13 @@ class _$_Todo implements _Todo {
 
 abstract class _Todo implements Todo {
   const factory _Todo(
-      {required int? id,
+      {required String? id,
       required String title,
       required String description,
       required TodoStatus state}) = _$_Todo;
 
   @override
-  int? get id;
+  String? get id;
   @override
   String get title;
   @override

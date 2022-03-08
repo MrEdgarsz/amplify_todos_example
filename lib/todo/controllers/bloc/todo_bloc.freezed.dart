@@ -41,6 +41,12 @@ class _$TodoEventTearOff {
       todo,
     );
   }
+
+  _Sync sync(List<Todo> todos) {
+    return _Sync(
+      todos,
+    );
+  }
 }
 
 /// @nodoc
@@ -55,6 +61,7 @@ mixin _$TodoEvent {
         add,
     required TResult Function(Todo todo) delete,
     required TResult Function(Todo todo) update,
+    required TResult Function(List<Todo> todos) sync,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +70,7 @@ mixin _$TodoEvent {
     TResult Function(String task, String description, TodoStatus state)? add,
     TResult Function(Todo todo)? delete,
     TResult Function(Todo todo)? update,
+    TResult Function(List<Todo> todos)? sync,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +79,7 @@ mixin _$TodoEvent {
     TResult Function(String task, String description, TodoStatus state)? add,
     TResult Function(Todo todo)? delete,
     TResult Function(Todo todo)? update,
+    TResult Function(List<Todo> todos)? sync,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -80,6 +89,7 @@ mixin _$TodoEvent {
     required TResult Function(_Add value) add,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Update value) update,
+    required TResult Function(_Sync value) sync,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -88,6 +98,7 @@ mixin _$TodoEvent {
     TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Update value)? update,
+    TResult Function(_Sync value)? sync,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,6 +107,7 @@ mixin _$TodoEvent {
     TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Update value)? update,
+    TResult Function(_Sync value)? sync,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,12 +146,18 @@ class __$FetchCopyWithImpl<$Res> extends _$TodoEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Fetch implements _Fetch {
+class _$_Fetch with DiagnosticableTreeMixin implements _Fetch {
   const _$_Fetch();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'TodoEvent.fetch()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'TodoEvent.fetch'));
   }
 
   @override
@@ -159,6 +177,7 @@ class _$_Fetch implements _Fetch {
         add,
     required TResult Function(Todo todo) delete,
     required TResult Function(Todo todo) update,
+    required TResult Function(List<Todo> todos) sync,
   }) {
     return fetch();
   }
@@ -170,6 +189,7 @@ class _$_Fetch implements _Fetch {
     TResult Function(String task, String description, TodoStatus state)? add,
     TResult Function(Todo todo)? delete,
     TResult Function(Todo todo)? update,
+    TResult Function(List<Todo> todos)? sync,
   }) {
     return fetch?.call();
   }
@@ -181,6 +201,7 @@ class _$_Fetch implements _Fetch {
     TResult Function(String task, String description, TodoStatus state)? add,
     TResult Function(Todo todo)? delete,
     TResult Function(Todo todo)? update,
+    TResult Function(List<Todo> todos)? sync,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -196,6 +217,7 @@ class _$_Fetch implements _Fetch {
     required TResult Function(_Add value) add,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Update value) update,
+    required TResult Function(_Sync value) sync,
   }) {
     return fetch(this);
   }
@@ -207,6 +229,7 @@ class _$_Fetch implements _Fetch {
     TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Update value)? update,
+    TResult Function(_Sync value)? sync,
   }) {
     return fetch?.call(this);
   }
@@ -218,6 +241,7 @@ class _$_Fetch implements _Fetch {
     TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Update value)? update,
+    TResult Function(_Sync value)? sync,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -272,7 +296,7 @@ class __$AddCopyWithImpl<$Res> extends _$TodoEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Add implements _Add {
+class _$_Add with DiagnosticableTreeMixin implements _Add {
   const _$_Add(this.task, this.description, this.state);
 
   @override
@@ -283,8 +307,18 @@ class _$_Add implements _Add {
   final TodoStatus state;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'TodoEvent.add(task: $task, description: $description, state: $state)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'TodoEvent.add'))
+      ..add(DiagnosticsProperty('task', task))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('state', state));
   }
 
   @override
@@ -318,6 +352,7 @@ class _$_Add implements _Add {
         add,
     required TResult Function(Todo todo) delete,
     required TResult Function(Todo todo) update,
+    required TResult Function(List<Todo> todos) sync,
   }) {
     return add(task, description, state);
   }
@@ -329,6 +364,7 @@ class _$_Add implements _Add {
     TResult Function(String task, String description, TodoStatus state)? add,
     TResult Function(Todo todo)? delete,
     TResult Function(Todo todo)? update,
+    TResult Function(List<Todo> todos)? sync,
   }) {
     return add?.call(task, description, state);
   }
@@ -340,6 +376,7 @@ class _$_Add implements _Add {
     TResult Function(String task, String description, TodoStatus state)? add,
     TResult Function(Todo todo)? delete,
     TResult Function(Todo todo)? update,
+    TResult Function(List<Todo> todos)? sync,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -355,6 +392,7 @@ class _$_Add implements _Add {
     required TResult Function(_Add value) add,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Update value) update,
+    required TResult Function(_Sync value) sync,
   }) {
     return add(this);
   }
@@ -366,6 +404,7 @@ class _$_Add implements _Add {
     TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Update value)? update,
+    TResult Function(_Sync value)? sync,
   }) {
     return add?.call(this);
   }
@@ -377,6 +416,7 @@ class _$_Add implements _Add {
     TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Update value)? update,
+    TResult Function(_Sync value)? sync,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -437,15 +477,23 @@ class __$DeleteCopyWithImpl<$Res> extends _$TodoEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Delete implements _Delete {
+class _$_Delete with DiagnosticableTreeMixin implements _Delete {
   const _$_Delete(this.todo);
 
   @override
   final Todo todo;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'TodoEvent.delete(todo: $todo)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'TodoEvent.delete'))
+      ..add(DiagnosticsProperty('todo', todo));
   }
 
   @override
@@ -473,6 +521,7 @@ class _$_Delete implements _Delete {
         add,
     required TResult Function(Todo todo) delete,
     required TResult Function(Todo todo) update,
+    required TResult Function(List<Todo> todos) sync,
   }) {
     return delete(todo);
   }
@@ -484,6 +533,7 @@ class _$_Delete implements _Delete {
     TResult Function(String task, String description, TodoStatus state)? add,
     TResult Function(Todo todo)? delete,
     TResult Function(Todo todo)? update,
+    TResult Function(List<Todo> todos)? sync,
   }) {
     return delete?.call(todo);
   }
@@ -495,6 +545,7 @@ class _$_Delete implements _Delete {
     TResult Function(String task, String description, TodoStatus state)? add,
     TResult Function(Todo todo)? delete,
     TResult Function(Todo todo)? update,
+    TResult Function(List<Todo> todos)? sync,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -510,6 +561,7 @@ class _$_Delete implements _Delete {
     required TResult Function(_Add value) add,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Update value) update,
+    required TResult Function(_Sync value) sync,
   }) {
     return delete(this);
   }
@@ -521,6 +573,7 @@ class _$_Delete implements _Delete {
     TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Update value)? update,
+    TResult Function(_Sync value)? sync,
   }) {
     return delete?.call(this);
   }
@@ -532,6 +585,7 @@ class _$_Delete implements _Delete {
     TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Update value)? update,
+    TResult Function(_Sync value)? sync,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -589,15 +643,23 @@ class __$UpdateCopyWithImpl<$Res> extends _$TodoEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Update implements _Update {
+class _$_Update with DiagnosticableTreeMixin implements _Update {
   const _$_Update(this.todo);
 
   @override
   final Todo todo;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'TodoEvent.update(todo: $todo)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'TodoEvent.update'))
+      ..add(DiagnosticsProperty('todo', todo));
   }
 
   @override
@@ -625,6 +687,7 @@ class _$_Update implements _Update {
         add,
     required TResult Function(Todo todo) delete,
     required TResult Function(Todo todo) update,
+    required TResult Function(List<Todo> todos) sync,
   }) {
     return update(todo);
   }
@@ -636,6 +699,7 @@ class _$_Update implements _Update {
     TResult Function(String task, String description, TodoStatus state)? add,
     TResult Function(Todo todo)? delete,
     TResult Function(Todo todo)? update,
+    TResult Function(List<Todo> todos)? sync,
   }) {
     return update?.call(todo);
   }
@@ -647,6 +711,7 @@ class _$_Update implements _Update {
     TResult Function(String task, String description, TodoStatus state)? add,
     TResult Function(Todo todo)? delete,
     TResult Function(Todo todo)? update,
+    TResult Function(List<Todo> todos)? sync,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -662,6 +727,7 @@ class _$_Update implements _Update {
     required TResult Function(_Add value) add,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Update value) update,
+    required TResult Function(_Sync value) sync,
   }) {
     return update(this);
   }
@@ -673,6 +739,7 @@ class _$_Update implements _Update {
     TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Update value)? update,
+    TResult Function(_Sync value)? sync,
   }) {
     return update?.call(this);
   }
@@ -684,6 +751,7 @@ class _$_Update implements _Update {
     TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Update value)? update,
+    TResult Function(_Sync value)? sync,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -702,21 +770,168 @@ abstract class _Update implements TodoEvent {
 }
 
 /// @nodoc
+abstract class _$SyncCopyWith<$Res> {
+  factory _$SyncCopyWith(_Sync value, $Res Function(_Sync) then) =
+      __$SyncCopyWithImpl<$Res>;
+  $Res call({List<Todo> todos});
+}
+
+/// @nodoc
+class __$SyncCopyWithImpl<$Res> extends _$TodoEventCopyWithImpl<$Res>
+    implements _$SyncCopyWith<$Res> {
+  __$SyncCopyWithImpl(_Sync _value, $Res Function(_Sync) _then)
+      : super(_value, (v) => _then(v as _Sync));
+
+  @override
+  _Sync get _value => super._value as _Sync;
+
+  @override
+  $Res call({
+    Object? todos = freezed,
+  }) {
+    return _then(_Sync(
+      todos == freezed
+          ? _value.todos
+          : todos // ignore: cast_nullable_to_non_nullable
+              as List<Todo>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Sync with DiagnosticableTreeMixin implements _Sync {
+  const _$_Sync(this.todos);
+
+  @override
+  final List<Todo> todos;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'TodoEvent.sync(todos: $todos)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'TodoEvent.sync'))
+      ..add(DiagnosticsProperty('todos', todos));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Sync &&
+            const DeepCollectionEquality().equals(other.todos, todos));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(todos));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SyncCopyWith<_Sync> get copyWith =>
+      __$SyncCopyWithImpl<_Sync>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(String task, String description, TodoStatus state)
+        add,
+    required TResult Function(Todo todo) delete,
+    required TResult Function(Todo todo) update,
+    required TResult Function(List<Todo> todos) sync,
+  }) {
+    return sync(todos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(String task, String description, TodoStatus state)? add,
+    TResult Function(Todo todo)? delete,
+    TResult Function(Todo todo)? update,
+    TResult Function(List<Todo> todos)? sync,
+  }) {
+    return sync?.call(todos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(String task, String description, TodoStatus state)? add,
+    TResult Function(Todo todo)? delete,
+    TResult Function(Todo todo)? update,
+    TResult Function(List<Todo> todos)? sync,
+    required TResult orElse(),
+  }) {
+    if (sync != null) {
+      return sync(todos);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Add value) add,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Update value) update,
+    required TResult Function(_Sync value) sync,
+  }) {
+    return sync(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Add value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Update value)? update,
+    TResult Function(_Sync value)? sync,
+  }) {
+    return sync?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Add value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Update value)? update,
+    TResult Function(_Sync value)? sync,
+    required TResult orElse(),
+  }) {
+    if (sync != null) {
+      return sync(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Sync implements TodoEvent {
+  const factory _Sync(List<Todo> todos) = _$_Sync;
+
+  List<Todo> get todos;
+  @JsonKey(ignore: true)
+  _$SyncCopyWith<_Sync> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$TodoStateTearOff {
   const _$TodoStateTearOff();
 
   _Initial initial() {
     return const _Initial();
-  }
-
-  _Loaded loaded(List<Todo> finished, List<Todo> inProgress, List<Todo> todo,
-      List<Todo> all) {
-    return _Loaded(
-      finished,
-      inProgress,
-      todo,
-      all,
-    );
   }
 
   _Loading loading() {
@@ -726,6 +941,16 @@ class _$TodoStateTearOff {
   _Error error(String message) {
     return _Error(
       message,
+    );
+  }
+
+  _Loaded loaded(List<Todo> finished, List<Todo> inProgress, List<Todo> todo,
+      List<Todo> all) {
+    return _Loaded(
+      finished,
+      inProgress,
+      todo,
+      all,
     );
   }
 }
@@ -738,56 +963,56 @@ mixin _$TodoState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
     required TResult Function(List<Todo> finished, List<Todo> inProgress,
             List<Todo> todo, List<Todo> all)
         loaded,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
     TResult Function(List<Todo> finished, List<Todo> inProgress,
             List<Todo> todo, List<Todo> all)?
         loaded,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
     TResult Function(List<Todo> finished, List<Todo> inProgress,
             List<Todo> todo, List<Todo> all)?
         loaded,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_Loaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_Loaded value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -826,12 +1051,18 @@ class __$InitialCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
+class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'TodoState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'TodoState.initial'));
   }
 
   @override
@@ -847,11 +1078,11 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
     required TResult Function(List<Todo> finished, List<Todo> inProgress,
             List<Todo> todo, List<Todo> all)
         loaded,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
   }) {
     return initial();
   }
@@ -860,11 +1091,11 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
     TResult Function(List<Todo> finished, List<Todo> inProgress,
             List<Todo> todo, List<Todo> all)?
         loaded,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
   }) {
     return initial?.call();
   }
@@ -873,11 +1104,11 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
     TResult Function(List<Todo> finished, List<Todo> inProgress,
             List<Todo> todo, List<Todo> all)?
         loaded,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -890,9 +1121,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_Loaded value) loaded,
   }) {
     return initial(this);
   }
@@ -901,9 +1132,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_Loaded value)? loaded,
   }) {
     return initial?.call(this);
   }
@@ -912,9 +1143,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -926,6 +1157,288 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements TodoState {
   const factory _Initial() = _$_Initial;
+}
+
+/// @nodoc
+abstract class _$LoadingCopyWith<$Res> {
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
+      __$LoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$LoadingCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
+    implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
+      : super(_value, (v) => _then(v as _Loading));
+
+  @override
+  _Loading get _value => super._value as _Loading;
+}
+
+/// @nodoc
+
+class _$_Loading with DiagnosticableTreeMixin implements _Loading {
+  const _$_Loading();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'TodoState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'TodoState.loading'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function(List<Todo> finished, List<Todo> inProgress,
+            List<Todo> todo, List<Todo> all)
+        loaded,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function(List<Todo> finished, List<Todo> inProgress,
+            List<Todo> todo, List<Todo> all)?
+        loaded,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function(List<Todo> finished, List<Todo> inProgress,
+            List<Todo> todo, List<Todo> all)?
+        loaded,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Loaded value) loaded,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_Loaded value)? loaded,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_Loaded value)? loaded,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading implements TodoState {
+  const factory _Loading() = _$_Loading;
+}
+
+/// @nodoc
+abstract class _$ErrorCopyWith<$Res> {
+  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
+      __$ErrorCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$ErrorCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
+    implements _$ErrorCopyWith<$Res> {
+  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
+      : super(_value, (v) => _then(v as _Error));
+
+  @override
+  _Error get _value => super._value as _Error;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_Error(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Error with DiagnosticableTreeMixin implements _Error {
+  const _$_Error(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'TodoState.error(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'TodoState.error'))
+      ..add(DiagnosticsProperty('message', message));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Error &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ErrorCopyWith<_Error> get copyWith =>
+      __$ErrorCopyWithImpl<_Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function(List<Todo> finished, List<Todo> inProgress,
+            List<Todo> todo, List<Todo> all)
+        loaded,
+  }) {
+    return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function(List<Todo> finished, List<Todo> inProgress,
+            List<Todo> todo, List<Todo> all)?
+        loaded,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function(List<Todo> finished, List<Todo> inProgress,
+            List<Todo> todo, List<Todo> all)?
+        loaded,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Loaded value) loaded,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_Loaded value)? loaded,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_Loaded value)? loaded,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Error implements TodoState {
+  const factory _Error(String message) = _$_Error;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -978,7 +1491,7 @@ class __$LoadedCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loaded implements _Loaded {
+class _$_Loaded with DiagnosticableTreeMixin implements _Loaded {
   const _$_Loaded(this.finished, this.inProgress, this.todo, this.all);
 
   @override
@@ -991,8 +1504,19 @@ class _$_Loaded implements _Loaded {
   final List<Todo> all;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'TodoState.loaded(finished: $finished, inProgress: $inProgress, todo: $todo, all: $all)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'TodoState.loaded'))
+      ..add(DiagnosticsProperty('finished', finished))
+      ..add(DiagnosticsProperty('inProgress', inProgress))
+      ..add(DiagnosticsProperty('todo', todo))
+      ..add(DiagnosticsProperty('all', all));
   }
 
   @override
@@ -1024,11 +1548,11 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
     required TResult Function(List<Todo> finished, List<Todo> inProgress,
             List<Todo> todo, List<Todo> all)
         loaded,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
   }) {
     return loaded(finished, inProgress, todo, all);
   }
@@ -1037,11 +1561,11 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
     TResult Function(List<Todo> finished, List<Todo> inProgress,
             List<Todo> todo, List<Todo> all)?
         loaded,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
   }) {
     return loaded?.call(finished, inProgress, todo, all);
   }
@@ -1050,11 +1574,11 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
     TResult Function(List<Todo> finished, List<Todo> inProgress,
             List<Todo> todo, List<Todo> all)?
         loaded,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1067,9 +1591,9 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_Loaded value) loaded,
   }) {
     return loaded(this);
   }
@@ -1078,9 +1602,9 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_Loaded value)? loaded,
   }) {
     return loaded?.call(this);
   }
@@ -1089,9 +1613,9 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1111,272 +1635,4 @@ abstract class _Loaded implements TodoState {
   List<Todo> get all;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
-
-  @override
-  _Loading get _value => super._value as _Loading;
-}
-
-/// @nodoc
-
-class _$_Loading implements _Loading {
-  const _$_Loading();
-
-  @override
-  String toString() {
-    return 'TodoState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Loading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(List<Todo> finished, List<Todo> inProgress,
-            List<Todo> todo, List<Todo> all)
-        loaded,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Todo> finished, List<Todo> inProgress,
-            List<Todo> todo, List<Todo> all)?
-        loaded,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Todo> finished, List<Todo> inProgress,
-            List<Todo> todo, List<Todo> all)?
-        loaded,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements TodoState {
-  const factory _Loading() = _$_Loading;
-}
-
-/// @nodoc
-abstract class _$ErrorCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
-      __$ErrorCopyWithImpl<$Res>;
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
-    implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
-      : super(_value, (v) => _then(v as _Error));
-
-  @override
-  _Error get _value => super._value as _Error;
-
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(_Error(
-      message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_Error implements _Error {
-  const _$_Error(this.message);
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'TodoState.error(message: $message)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Error &&
-            const DeepCollectionEquality().equals(other.message, message));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
-
-  @JsonKey(ignore: true)
-  @override
-  _$ErrorCopyWith<_Error> get copyWith =>
-      __$ErrorCopyWithImpl<_Error>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(List<Todo> finished, List<Todo> inProgress,
-            List<Todo> todo, List<Todo> all)
-        loaded,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-  }) {
-    return error(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Todo> finished, List<Todo> inProgress,
-            List<Todo> todo, List<Todo> all)?
-        loaded,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-  }) {
-    return error?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Todo> finished, List<Todo> inProgress,
-            List<Todo> todo, List<Todo> all)?
-        loaded,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Error implements TodoState {
-  const factory _Error(String message) = _$_Error;
-
-  String get message;
-  @JsonKey(ignore: true)
-  _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
 }

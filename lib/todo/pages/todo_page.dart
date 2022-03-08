@@ -1,3 +1,4 @@
+import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:collection/src/iterable_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:todos_example/constants.dart' as constants;
 import 'package:todos_example/todo/controllers/bloc/todo_bloc.dart';
 import 'package:todos_example/todo/models/todo_model.dart';
 import 'package:todos_example/todo/models/todo_status.dart';
+import 'package:todos_example/todo/services/todo_amplify_service.dart';
 import 'package:todos_example/todo/services/todo_test_service.dart';
 import 'package:todos_example/todo/widgets/todo_list.dart';
 import 'package:todos_example/todo/widgets/todo_tile.dart';
@@ -18,8 +20,7 @@ class TodoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       child: const TodoView(),
-      create: (context) =>
-          TodoBloc(TodoTestService())..add(const TodoEvent.fetch()),
+      create: (context) => TodoBloc(TodoAmplifyService()),
     );
   }
 }
@@ -140,6 +141,12 @@ class _TodoViewState extends State<TodoView> {
           },
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          _showAddTodoModal();
+        },
+      ),
     );
   }
 
@@ -166,7 +173,7 @@ class _TodoViewState extends State<TodoView> {
         Future.delayed(constants.debounceDuration, () {
           _isDeboucing = false;
         });
-        if (_pageController.page! + 1 <= 1) {
+        if (_pageController.page! + 1 <= 2) {
           _pageController.animateToPage(
             (_pageController.page! + 1).toInt(),
             duration: constants.animateToPageDuration,
@@ -181,6 +188,63 @@ class _TodoViewState extends State<TodoView> {
     return TodoTile(
       key: ValueKey("TodoTile-${todo.id}"),
       todo: todo,
+    );
+  }
+
+  Future<void> _showAddTodoModal() {
+    String title = "";
+    String description = "";
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+    return showModalBottomSheet(
+      context: context,
+      builder: (_) => Form(
+        key: formKey,
+        child: Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Title',
+                ),
+                onSaved: (value) {
+                  title = value ?? "";
+                },
+                validator: (value) =>
+                    value != null && value.isEmpty ? 'Title is required' : null,
+              ),
+              const SizedBox(height: 16),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Description',
+                ),
+                onSaved: (value) {
+                  description = value ?? "";
+                },
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  if (formKey.currentState != null &&
+                      formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                    context.read<TodoBloc>().add(
+                          TodoEvent.add(
+                            title,
+                            description,
+                            TodoStatus.todo,
+                          ),
+                        );
+                    Navigator.pop(context);
+                  }
+                },
+                child: const Text('Add'),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

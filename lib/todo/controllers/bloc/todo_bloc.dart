@@ -1,6 +1,11 @@
+import 'dart:developer';
+
+import 'package:amplify_datastore/amplify_datastore.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:todos_example/models/TodoModel.dart';
 import 'package:todos_example/todo/interfaces/todo_interface.dart';
 import 'package:todos_example/todo/models/todo_model.dart';
 import 'package:todos_example/todo/models/todo_status.dart';
@@ -16,6 +21,10 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     on<_Add>(_onAdd);
     on<_Update>(_onUpdate);
     on<_Delete>(_onDelete);
+    on<_Sync>(_onSync);
+    _repository.watchTodos().listen((todos) async {
+      add(_Sync(todos));
+    });
   }
 
   @override
@@ -88,8 +97,16 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     }
   }
 
+  Future<void> _onSync(_Sync event, Emitter<TodoState> emit) async {
+    emit(await _sortAndReturnTodos(event.todos));
+  }
+
   Future<TodoState> _fetchSortAndReturnTodos() async {
     final alltodos = await _repository.getTodos();
+    return _sortAndReturnTodos(alltodos);
+  }
+
+  Future<TodoState> _sortAndReturnTodos(List<Todo> alltodos) async {
     final todos =
         alltodos.where((todo) => todo.state == TodoStatus.todo).toList();
     final finishedTodos =
